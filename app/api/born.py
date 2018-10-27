@@ -5,17 +5,7 @@ from app.tables.models import Born, BornSchema, db
 from app.api.custom_response import custom_response
 
 born_fields = api.model('Born', {
-    'nama_bayi' : fields.String,
-    'tempat_lahir' : fields.String,
-    'tanggal_lahir' : fields.String,
-    'jam_lahir' : fields.String,
-    'berat_badan' : fields.String,
-    'jenis_kelamin' : fields.String,
-    'nama_ayah' : fields.String,
-    'nama_ibu' : fields.String,
-    'alamat' : fields.String,
-    'pelapor' : fields.String,
-    'hubungan' : fields.String,
+
 })
 
 born_schema = BornSchema(many=True)
@@ -56,8 +46,8 @@ class ListBorn(Resource):
             except Exception as e:
                 return custom_response(500, msg='There\'s an error!')
 
-    def delete(self, id):
-        queryset = Born.query.get(id)
+    def delete(self):
+        queryset = Born.query.get()
         try:
             response = [
                 queryset.__serialize__()
