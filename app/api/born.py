@@ -38,13 +38,9 @@ class ListBorn(Resource):
                 queryset.alamat = data['alamat']
                 queryset.pelapor = data['pelapor']
                 queryset.hubungan = data['hubungan']
-                if queryset.save():
-                    response = [
-                        queryset.__serialize__()
-                        ]
-                    return custom_response(msg="Data Success Add!" ,data=response)
             except Exception as e:
-                return custom_response(500, msg='There\'s an error!')
+                return custom_response(msg="Ok")        
+        return custom_response(msg="Ok")        
 
     def delete(self):
         queryset = Born.query.get()
